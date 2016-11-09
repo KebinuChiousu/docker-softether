@@ -1,10 +1,10 @@
 IMAGE_NAME=meredithkm/softether
 
 build:
-        docker build -t $(IMAGE_NAME) ./softether/.
+	docker build -t $(IMAGE_NAME) ./softether/.
 
 clean:
-        docker rmi -f $(IMAGE_NAME) || true
+	docker rmi -f $(IMAGE_NAME) || true
 
 create:
-        ./scripts/create.sh
+	./scripts/create.sh
