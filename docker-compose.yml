@@ -4,11 +4,19 @@ services:
     container_name: softether
     restart: unless-stopped
     image: meredithkm/softether
-    environment:
     volumes:
-    - /mnt/config/softether/:/usr/local/vpnserver/
-    - /mnt/config/softether-logs/:/var/log/vpnserver/
-    net:
-    - host
-    cap-add:
-    - NET_ADMIN
+    - app:/usr/local/vpnserver/
+    - logs:/var/log/vpnserver/
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+
+volumes:
+  app:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt/docker/softether/app
+  logs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt/docker/softether/logs
