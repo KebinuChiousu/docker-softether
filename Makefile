@@ -7,8 +7,11 @@ build:
 clean:
 	docker rmi -f $(IMAGE_NAME) || true
 
-create:
-	./scripts/create.sh $(CONTAINER_NAME)
+start:
+	docker-compose up -d 
+
+stop:
+	docker-compose down
 
 destroy:
 	docker rm -f $(CONTAINER_NAME) || true

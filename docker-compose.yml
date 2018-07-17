@@ -1,0 +1,14 @@
+version: '2'
+services:
+  softether:
+    container_name: softether
+    restart: unless-stopped
+    image: meredithkm/softether
+    environment:
+    volumes:
+    - /mnt/config/softether/:/usr/local/vpnserver/
+    - /mnt/config/softether-logs/:/var/log/vpnserver/
+    net:
+    - host
+    cap-add:
+    - NET_ADMIN
